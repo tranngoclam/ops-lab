@@ -1,9 +1,11 @@
 # Ops Lab
 
+> This repository provides a set of blueprints for Operation in Distributed System, Microservices.
+
 ## Blueprints
 
 - [001: Scaling and Load Balancing with HAProxy](001_scaling_containers)
-- [002: Explore Docker BuildKit features](002_docker_buildkit)
+- [002: Explore Docker BuildKit](002_docker_buildkit)
 - [003: Use YAML Merge in Docker Compose](003_docker_compose_merge)
 - [004: Load Balancing with HAProxy and gRPC](004_haproxy_grpc_load_balancing)
 - [005: Load Balancing with NGINX and gRPC](005_nginx_grpc_load_balancing)

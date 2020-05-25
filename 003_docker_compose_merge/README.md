@@ -1,74 +1,47 @@
-# Scaling and Load Balancing with HAProxy
+# Use YAML Merge in Docker Compose
 
-- This blueprint uses docker-compose to scale a container to multiple containers and put HAProxy as a load balancer in front of them.
-- If a container is down, we can spin up a new one, and the load is still balanced.
-- `docker-compose up --scale SERVICE=NUM` is the command to scale a service to ${NUM} different containers.  
+- [YAML Merge](https://yaml.org/type/merge.html) in docker-compose file helps to reuse shared configurations between docker containers
+- How to define and apply shared configs:
+
+```yaml
+x-srv-config: &ref
+//
+
+<<: *ref
+``` 
 
 ## Up
 
 ```bash
 $ make up
-...
-WARNING: Image for service server was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
-Creating 001_scaling_containers_haproxy_1 ... done
-Creating 001_scaling_containers_server_1  ... done
-Creating 001_scaling_containers_server_2  ... done
-Creating 001_scaling_containers_server_3  ... done
-Creating 001_scaling_containers_server_4  ... done
-Creating 001_scaling_containers_server_5  ... done
-Attaching to 001_scaling_containers_server_2, 001_scaling_containers_server_4, 001_scaling_containers_server_1, 001_scaling_containers_server_3, 001_scaling_containers_server_5, 001_scaling_containers_haproxy_1
-server_3   | 2020/05/25 14:54:38 [info] server is listening on :8000
-server_2   | 2020/05/25 14:54:38 [info] server is listening on :8000
-server_1   | 2020/05/25 14:54:38 [info] server is listening on :8000
-server_5   | 2020/05/25 14:54:38 [info] server is listening on :8000
-server_4   | 2020/05/25 14:54:38 [info] server is listening on :8000
-haproxy_1  | [NOTICE] 145/145438 (1) : New worker #1 (6) forked
-```
-
-## Test
-
-> This test makes curl command to the server through the load balancer every second and print the response to console, which is the hostname of container.
-
-```bash
-$ make test
-c1452817b456
-45a69813b21b
-ea75b072f47a
-7705f40eec57
-5b17d63340e1
-c1452817b456
-45a69813b21b
-ea75b072f47a
-7705f40eec57
-5b17d63340e1
-```
-
-> Logs from docker-compose up command will have more entries
-
-```bash
-...
-server_2   | 2020/05/25 14:54:39 [info] server received request
-server_4   | 2020/05/25 14:54:40 [info] server received request
-server_1   | 2020/05/25 14:54:41 [info] server received request
-server_3   | 2020/05/25 14:54:42 [info] server received request
-server_5   | 2020/05/25 14:54:43 [info] server received request
-server_2   | 2020/05/25 14:54:44 [info] server received request
-server_4   | 2020/05/25 14:54:45 [info] server received request
-server_1   | 2020/05/25 14:54:46 [info] server received request
-server_3   | 2020/05/25 14:54:47 [info] server received request
-server_5   | 2020/05/25 14:54:48 [info] server received request
+WARNING: Native build is an experimental feature and could change at any time
+Creating network "003_docker_compose_merge_default" with the default driver
+Creating 003_docker_compose_merge_bar_1 ... done
+Creating 003_docker_compose_merge_baz_1 ... done
+Attaching to 003_docker_compose_merge_bar_1, 003_docker_compose_merge_baz_1
+bar_1  | HOSTNAME=d6e6801cd5ac
+bar_1  | SHLVL=1
+bar_1  | HOME=/root
+bar_1  | PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+bar_1  | BAR=bar
+bar_1  | FOO=foo
+bar_1  | PWD=/
+baz_1  | HOSTNAME=a42be1aedd5e
+baz_1  | SHLVL=1
+baz_1  | HOME=/root
+baz_1  | PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+baz_1  | FOO=foo
+baz_1  | BAZ=baz
+baz_1  | PWD=/
+003_docker_compose_merge_bar_1 exited with code 0
+003_docker_compose_merge_baz_1 exited with code 0
 ```
 
 ## Down
 
 ```bash
 $ make down
-Removing 001_scaling_containers_server_4  ... done
-Removing 001_scaling_containers_server_5  ... done
-Removing 001_scaling_containers_server_1  ... done
-Removing 001_scaling_containers_server_2  ... done
-Removing 001_scaling_containers_server_3  ... done
-Removing 001_scaling_containers_haproxy_1 ... done
-Removing network 001_scaling_containers_default
-Removing image 001_scaling_containers_server
+Removing 003_docker_compose_merge_bar_1 ... done
+Removing 003_docker_compose_merge_baz_1 ... done
+Removing network 003_docker_compose_merge_default
 ```
