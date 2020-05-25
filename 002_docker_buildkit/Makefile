@@ -5,5 +5,5 @@ build:
 		--secret id=keyone,src=./etc/keyone \
 		--progress plain \
 		--no-cache \
-		-f ./Dockerfile \
+		-f ./docker/Dockerfile \
 		-t coffee-$(FLAVOR) .
