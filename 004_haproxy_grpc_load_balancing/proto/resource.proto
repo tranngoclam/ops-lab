@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option go_package = "resourceservice";
+
+message Resource {
+    string id = 1;
+    string name = 2;
+}
+
+message ResourceID {
+    string value = 1;
+}
+
+service ResourceService {
+    rpc GetResource (ResourceID) returns (Resource);
+}

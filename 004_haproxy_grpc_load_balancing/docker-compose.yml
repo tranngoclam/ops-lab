@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    environment:
+      - SERVER_PORT=3001
+      - RESOURCE_ADDRESS=haproxy:443
+    depends_on:
+      - resource
+      - haproxy
+
+  resource:
+    container_name: sm_resource
+    build:
+      context: ./resource
+      dockerfile: Dockerfile
+    environment:
+      - SERVER_PORT=3002
+
+  haproxy:
+    image: haproxy:2.1.4
+    volumes:
+      - "./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg"
+    ports:
+      - "80:80"
+    depends_on:
+      - resource

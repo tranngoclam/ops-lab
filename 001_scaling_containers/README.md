@@ -27,7 +27,7 @@ haproxy_1  | [NOTICE] 145/145438 (1) : New worker #1 (6) forked
 
 ## Test
 
-> This test makes curl command to the server through the load balancer every second and print the response to console, which is the hostname of container.
+> This test makes curl command to the server through the load balancer every second and prints the response to console, which is the hostname of container.
 
 ```bash
 $ make test
