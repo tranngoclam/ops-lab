@@ -9,14 +9,6 @@
 ```bash
 $ make up
 ...
-WARNING: Image for service server was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
-Creating 001_scaling_containers_haproxy_1 ... done
-Creating 001_scaling_containers_server_1  ... done
-Creating 001_scaling_containers_server_2  ... done
-Creating 001_scaling_containers_server_3  ... done
-Creating 001_scaling_containers_server_4  ... done
-Creating 001_scaling_containers_server_5  ... done
-Attaching to 001_scaling_containers_server_2, 001_scaling_containers_server_4, 001_scaling_containers_server_1, 001_scaling_containers_server_3, 001_scaling_containers_server_5, 001_scaling_containers_haproxy_1
 server_3   | 2020/05/25 14:54:38 [info] server is listening on :8000
 server_2   | 2020/05/25 14:54:38 [info] server is listening on :8000
 server_1   | 2020/05/25 14:54:38 [info] server is listening on :8000
@@ -63,12 +55,12 @@ server_5   | 2020/05/25 14:54:48 [info] server received request
 
 ```bash
 $ make down
-Removing 001_scaling_containers_server_4  ... done
-Removing 001_scaling_containers_server_5  ... done
-Removing 001_scaling_containers_server_1  ... done
-Removing 001_scaling_containers_server_2  ... done
-Removing 001_scaling_containers_server_3  ... done
-Removing 001_scaling_containers_haproxy_1 ... done
-Removing network 001_scaling_containers_default
-Removing image 001_scaling_containers_server
+Removing 001_haproxy_scaling_containers_server_4  ... done
+Removing 001_haproxy_scaling_containers_server_5  ... done
+Removing 001_haproxy_scaling_containers_server_1  ... done
+Removing 001_haproxy_scaling_containers_server_2  ... done
+Removing 001_haproxy_scaling_containers_server_3  ... done
+Removing 001_haproxy_scaling_containers_haproxy_1 ... done
+Removing network 001_haproxy_scaling_containers_default
+Removing image 001_haproxy_scaling_containers_server
 ```

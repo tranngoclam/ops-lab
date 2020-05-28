@@ -4,11 +4,12 @@
 
 ## Blueprints
 
-- [001: Scaling and Load Balancing with HAProxy](001_scaling_containers)
-- [WIP - 002: Explore Docker BuildKit](002_docker_buildkit)
+- [001: Scaling and Load Balancing with HAProxy](001_haproxy_scaling_containers)
+- [002: Scaling and Load Balancing with NGINX](002_nginx_scaling_containers)
 - [003: Use YAML Merge in Docker Compose](003_docker_compose_merge)
-- [WIP - 004: Load Balancing with HAProxy and gRPC](004_haproxy_grpc_load_balancing)
-- [WIP - 005: Load Balancing with NGINX and gRPC](005_nginx_grpc_load_balancing)
+- [WIP - 004: Explore Docker BuildKit](004_docker_buildkit)
+- [WIP - 005: Load Balancing with HAProxy and gRPC](005_haproxy_grpc_load_balancing)
+- [WIP - 006: Load Balancing with NGINX and gRPC](006_nginx_grpc_load_balancing)
 
 ## Getting Started
 

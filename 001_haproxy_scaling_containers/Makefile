@@ -1,5 +1,5 @@
 COMPOSE_FILE := docker-compose.yml
-COMPOSE_PROJECT_NAME := 001_scaling_containers
+COMPOSE_PROJECT_NAME := 001_haproxy_scaling_containers
 
 up:
 	@COMPOSE_FILE=$(COMPOSE_FILE) COMPOSE_PROJECT_NAME=$(COMPOSE_PROJECT_NAME) \
