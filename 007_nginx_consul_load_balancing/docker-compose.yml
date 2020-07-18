@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  #######################
+  # NORTH instance
+  # - bootstrap Consul
+  #######################
+  north:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: north
+    container_name: north
+    environment:
+      NODE: north
+      PRIVATE_IP_ADDRESS: 10.64.0.2
+    ports:
+      - "8400:8400"
+      - "8500:8500"
+      - "8600:8600"
+      - "8600:8600/udp"
+    networks:
+      trust:
+        ipv4_address: 10.64.0.2
+
+  #######################
+  # MIDDLE instance
+  #######################
+  middle:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: middle
+    environment:
+      NODE: middle
+      PRIVATE_IP_ADDRESS: 10.64.0.3
+    networks:
+      trust:
+        ipv4_address: 10.64.0.3
+
+  #######################
+  # SOUTH instance
+  #######################
+  south:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: south
+    environment:
+      NODE: south
+      PRIVATE_IP_ADDRESS: 10.64.0.4
+    networks:
+      trust:
+        ipv4_address: 10.64.0.4
+
+networks:
+  trust:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.64.0.0/16

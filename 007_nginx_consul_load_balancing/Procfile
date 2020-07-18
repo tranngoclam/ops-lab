@@ -1,0 +1,5 @@
+server: /opt/server.sh
+
+consul: /opt/consul.sh
+
+nginx: /opt/nginx.sh
