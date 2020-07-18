@@ -1,5 +1,3 @@
-server: /opt/server.sh
+consul: /opt/consul-server-default.sh
 
-consul: /opt/consul.sh
-
-nginx: /opt/nginx.sh
+nomad: /opt/nomad-client-default.sh

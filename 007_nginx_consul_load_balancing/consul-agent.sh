@@ -1,4 +1,4 @@
-consul agent -server \
+consul agent \
     -advertise $PRIVATE_IP_ADDRESS \
     -bind $PRIVATE_IP_ADDRESS \
     -bootstrap \
