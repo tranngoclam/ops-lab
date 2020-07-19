@@ -4,15 +4,20 @@ job "server" {
   ]
 
   group "server" {
-    count = 3
+    count = 1
+
+    constraint {
+      operator = "distinct_hosts"
+      value    = "true"
+    }
 
     task "server" {
+      driver = "docker"
+
       env {
         PORT = "${NOMAD_PORT_http}"
         NODE_IP = "${NOMAD_IP_http}"
       }
-
-      driver = "docker"
 
       config {
         image = "docker.io/library/server:v1.0.0"

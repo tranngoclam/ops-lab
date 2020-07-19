@@ -1,14 +1,14 @@
 FROM centos:7 AS base
 
 # Install Utilities
-RUN yum -y update && yum clean all && yum install -y \
+RUN yum -y update && yum install -y \
     bash \
     curl \
     dnsutils \
+    iproute \
     iputils-ping \
     net-tools \
     jq \
-    supervisor \
     tar \
     unzip \
     zip
@@ -27,7 +27,8 @@ RUN cd /bin && unzip /tmp/nomad.zip && chmod +x /bin/nomad && rm /tmp/nomad.zip
 # Bootstrap
 FROM base AS bootstrap
 
-COPY consul-server-bootstrap.sh nomad-server-default.sh nomad-client-default.sh server.hcl client.hcl /opt/
+COPY consul-server-bootstrap.sh nomad-server-default.sh nomad-client-default.sh base.hcl server.hcl client.hcl /opt/
+COPY server.nomad nginx.nomad /job/
 ADD Procfile-bootstrap /root/Procfile
 
 ENTRYPOINT [ "goreman" ]
@@ -36,7 +37,7 @@ CMD [ "-f", "/root/Procfile", "start" ]
 # Default
 FROM base AS default
 
-COPY consul-server-default.sh nomad-server-default.sh nomad-client-default.sh server.hcl client.hcl /opt/
+COPY consul-server-default.sh nomad-server-default.sh nomad-client-default.sh base.hcl server.hcl client.hcl /opt/
 ADD Procfile /root/Procfile
 
 ENTRYPOINT [ "goreman" ]

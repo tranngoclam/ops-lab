@@ -2,9 +2,15 @@ job "nginx" {
   datacenters = [
     "dc1"
   ]
+  type = "service"
 
   group "nginx" {
     count = 3
+
+    constraint {
+      operator = "distinct_hosts"
+      value = "true"
+    }
 
     task "nginx" {
       driver = "docker"
