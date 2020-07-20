@@ -27,8 +27,7 @@ RUN cd /bin && unzip /tmp/nomad.zip && chmod +x /bin/nomad && rm /tmp/nomad.zip
 # Bootstrap
 FROM base AS bootstrap
 
-COPY consul-server-bootstrap.sh nomad-server-default.sh nomad-client-default.sh base.hcl server.hcl client.hcl /opt/
-COPY server.nomad nginx.nomad /job/
+COPY consul-server-bootstrap.sh /opt/
 ADD Procfile-bootstrap /root/Procfile
 
 ENTRYPOINT [ "goreman" ]
@@ -37,7 +36,7 @@ CMD [ "-f", "/root/Procfile", "start" ]
 # Default
 FROM base AS default
 
-COPY consul-server-default.sh nomad-server-default.sh nomad-client-default.sh base.hcl server.hcl client.hcl /opt/
+COPY consul-server-default.sh /opt/
 ADD Procfile /root/Procfile
 
 ENTRYPOINT [ "goreman" ]

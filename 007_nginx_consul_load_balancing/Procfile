@@ -1,5 +1,0 @@
-consul: /opt/consul-server-default.sh
-
-nomad-server: /opt/nomad-server-default.sh
-
-nomad-client: /opt/nomad-client-default.sh
