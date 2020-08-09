@@ -10,6 +10,7 @@
 - [WIP - 004: Explore Docker BuildKit](004_docker_buildkit)
 - [WIP - 005: Load Balancing with HAProxy and gRPC](005_haproxy_grpc_load_balancing)
 - [WIP - 006: Load Balancing with NGINX and gRPC](006_nginx_grpc_load_balancing)
+- [007: Explore HashiCorp with Docker Compose](007_hashicorp_docker_compose)
 
 ## Getting Started
 

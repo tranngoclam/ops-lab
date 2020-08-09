@@ -1,0 +1,7 @@
+consul: /opt/consul-server-default.sh
+
+docker: /usr/bin/dockerd
+
+nomad-server: /opt/nomad-server.sh
+
+nomad-client: /opt/nomad-client.sh
