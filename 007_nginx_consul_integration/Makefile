@@ -20,9 +20,13 @@ deploy-server:
 	@COMPOSE_FILE=$(COMPOSE_FILE) COMPOSE_PROJECT_NAME=$(COMPOSE_PROJECT_NAME) \
 		docker exec north nomad job run /job/server.nomad
 
-deploy-nginx:
+import:
 	@COMPOSE_FILE=$(COMPOSE_FILE) COMPOSE_PROJECT_NAME=$(COMPOSE_PROJECT_NAME) \
-		docker exec north nomad job run --verbose /job/nginx.nomad
+		docker exec north consul kv import @/opt/newenv.json
+
+deploy:
+	@COMPOSE_FILE=$(COMPOSE_FILE) COMPOSE_PROJECT_NAME=$(COMPOSE_PROJECT_NAME) \
+		docker exec north nomad job run --verbose nginx.nomad
 
 plan-nginx:
 	@COMPOSE_FILE=$(COMPOSE_FILE) COMPOSE_PROJECT_NAME=$(COMPOSE_PROJECT_NAME) \

@@ -23,8 +23,7 @@ services:
       - "8500:8500"
       - "8600:8600"
       - "8600:8600/udp"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+    privileged: true
     networks:
       trust:
         ipv4_address: 10.64.0.2
@@ -40,10 +39,9 @@ services:
     container_name: middle
     environment:
       NODE: middle
-      CONSUL_SERVER_BOOTSTRAP: 10.64.0.2
+      CONSUL_SERVER_BOOTSTRAP: north
       PRIVATE_IP_ADDRESS: 10.64.0.3
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+    privileged: true
     networks:
       trust:
         ipv4_address: 10.64.0.3
@@ -59,10 +57,9 @@ services:
     container_name: south
     environment:
       NODE: south
-      CONSUL_SERVER_BOOTSTRAP: 10.64.0.2
+      CONSUL_SERVER_BOOTSTRAP: north
       PRIVATE_IP_ADDRESS: 10.64.0.4
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+    privileged: true
     networks:
       trust:
         ipv4_address: 10.64.0.4
