@@ -20,6 +20,13 @@ job "nginx" {
       value = "true"
     }
 
+    restart {
+      attempts = 1
+      interval = "5m"
+      delay = "25s"
+      mode = "delay"
+    }
+
     task "nginx" {
       driver = "docker"
 

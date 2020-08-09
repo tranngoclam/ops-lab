@@ -28,9 +28,6 @@ consul {
   server_service_name = "nomad"
   client_service_name = "nomad-client"
 
-  # Auth info for http access
-  #auth = user:password
-
   # Advertise Nomad services to Consul
   # Enables automatically registering the services
   auto_advertise = true

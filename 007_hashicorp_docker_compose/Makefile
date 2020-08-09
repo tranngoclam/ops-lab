@@ -26,8 +26,4 @@ import:
 
 deploy:
 	@COMPOSE_FILE=$(COMPOSE_FILE) COMPOSE_PROJECT_NAME=$(COMPOSE_PROJECT_NAME) \
-		docker exec north nomad job run --verbose nginx.nomad
-
-plan-nginx:
-	@COMPOSE_FILE=$(COMPOSE_FILE) COMPOSE_PROJECT_NAME=$(COMPOSE_PROJECT_NAME) \
-		docker exec north nomad job plan /job/nginx.nomad
+		docker exec north nomad job run --verbose /opt/nginx.nomad

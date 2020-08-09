@@ -34,7 +34,7 @@ RUN cd /bin && unzip /tmp/consul.zip && chmod +x /bin/consul && rm /tmp/consul.z
 ADD https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip /tmp/nomad.zip
 RUN cd /bin && unzip /tmp/nomad.zip && chmod +x /bin/nomad && rm /tmp/nomad.zip
 
-COPY newenv.json docker.sh nomad-server.sh nomad-client.sh base.hcl server.hcl client.hcl /opt/
+COPY newenv.json nginx.nomad docker.sh nomad-server.sh nomad-client.sh base.hcl server.hcl client.hcl /opt/
 
 # Bootstrap
 FROM base AS bootstrap

@@ -16,7 +16,7 @@ advertise {
   serf = "__IP_ADDRESS__:4648"
 }
 
-log_level = "DEBUG"
+log_level = "INFO"
 
 enable_debug = true
 
