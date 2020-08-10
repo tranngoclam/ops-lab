@@ -2,18 +2,18 @@ region = "vietnam"
 
 data_dir = "/tmp/nomad/"
 
-bind_addr = "127.0.0.1"
+bind_addr = "0.0.0.0"
 
 addresses {
-  http = "__IP_ADDRESS__"
-  rpc = "__IP_ADDRESS__"
-  serf = "__IP_ADDRESS__"
+  http = "{{ GetPrivateIP }}"
+  rpc = "{{ GetPrivateIP }}"
+  serf = "{{ GetPrivateIP }}"
 }
 
 advertise {
-  http = "__IP_ADDRESS__:4646"
-  rpc = "__IP_ADDRESS__:4647"
-  serf = "__IP_ADDRESS__:4648"
+  http = "{{ GetPrivateIP }}:4646"
+  rpc = "{{ GetPrivateIP }}:4647"
+  serf = "{{ GetPrivateIP }}:4648"
 }
 
 log_level = "INFO"
