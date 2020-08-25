@@ -8,10 +8,8 @@ services:
       SERVER_PORT: 8000
 
   nginx:
-    image: nginx:1.17.10
+    image: nginx:1.19.2
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
       - '80:80'
-    logging:
-      driver: none
