@@ -5,6 +5,11 @@ services:
     build:
       context: .
       dockerfile: server/Dockerfile
+    healthcheck:
+      test: [ "CMD", "grpc-health-probe", "-addr", "server:50051" ]
+      interval: 5s
+      timeout: 5s
+      retries: 3
 
   nginx:
     image: nginx:1.19.4

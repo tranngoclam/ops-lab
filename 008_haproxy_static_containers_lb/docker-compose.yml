@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: ./server
+    environment:
+      SERVER_PORT: 8000
+
+  haproxy:
+    image: haproxy:2.3.0
+    volumes:
+      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    ports:
+      - '80:80'
