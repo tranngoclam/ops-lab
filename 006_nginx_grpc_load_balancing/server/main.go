@@ -9,6 +9,7 @@ import (
 	"google.golang.org/grpc"
 	hw "google.golang.org/grpc/examples/helloworld/helloworld"
 	health "google.golang.org/grpc/health/grpc_health_v1"
+	"google.golang.org/grpc/reflection"
 	"log"
 	"net"
 	"os"
@@ -64,13 +65,18 @@ func main() {
 			),
 		),
 	)
+
 	hostname, err := os.Hostname()
 	if err != nil {
 		panic(err)
 	}
 	server := &server{hostname: hostname}
+
 	health.RegisterHealthServer(s, server)
 	hw.RegisterGreeterServer(s, server)
+
+	reflection.Register(s)
+
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}

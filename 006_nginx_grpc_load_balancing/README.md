@@ -44,3 +44,28 @@ nginx_1   | 172.28.0.1 - - [08/Nov/2020:04:12:33 +0000] "POST /helloworld.Greete
 ```bash
 $ make down
 ```
+
+## Use grpcurl
+
+> https://github.com/fullstorydev/grpcurl
+
+```bash
+// list services
+$ grpcurl -plaintext 127.0.0.1:80 list
+grpc.health.v1.Health
+grpc.reflection.v1alpha.ServerReflection
+helloworld.Greeter
+
+// describe a service
+$ grpcurl -plaintext 127.0.0.1:80 describe helloworld.Greeter
+helloworld.Greeter is a service:
+service Greeter {
+  rpc SayHello ( .helloworld.HelloRequest ) returns ( .helloworld.HelloReply );
+}
+
+// invoke a method
+$ grpcurl -plaintext -d '{"name":"Lam Tran"}' 127.0.0.1:80 helloworld.Greeter/SayHello
+{
+  "message": "Hello Lam Tran from d22bc2d7d64c"
+}
+```

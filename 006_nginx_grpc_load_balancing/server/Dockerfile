@@ -1,4 +1,4 @@
-FROM golang:1.15.4 AS build
+FROM golang:1.15.5 AS build
 
 WORKDIR /src
 
@@ -12,4 +12,4 @@ COPY . /src/
 
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app/server /src/server/main.go
 
-CMD ["/app/server"]
+CMD [ "/app/server" ]
