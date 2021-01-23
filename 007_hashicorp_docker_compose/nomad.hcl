@@ -6,13 +6,13 @@ bind_addr = "127.0.0.1"
 
 addresses {
   http = "__IP_ADDRESS__"
-  rpc = "__IP_ADDRESS__"
+  rpc  = "__IP_ADDRESS__"
   serf = "__IP_ADDRESS__"
 }
 
 advertise {
   http = "__IP_ADDRESS__:4646"
-  rpc = "__IP_ADDRESS__:4647"
+  rpc  = "__IP_ADDRESS__:4647"
   serf = "__IP_ADDRESS__:4648"
 }
 

@@ -39,16 +39,16 @@ ea75b072f47a
 
 ```bash
 ...
-server_2   | 2020/05/25 14:54:39 [info] server received request
-server_4   | 2020/05/25 14:54:40 [info] server received request
-server_1   | 2020/05/25 14:54:41 [info] server received request
-server_3   | 2020/05/25 14:54:42 [info] server received request
-server_5   | 2020/05/25 14:54:43 [info] server received request
-server_2   | 2020/05/25 14:54:44 [info] server received request
-server_4   | 2020/05/25 14:54:45 [info] server received request
-server_1   | 2020/05/25 14:54:46 [info] server received request
-server_3   | 2020/05/25 14:54:47 [info] server received request
-server_5   | 2020/05/25 14:54:48 [info] server received request
+server_2   | 2021/01/23 11:40:32 [info] server received request
+haproxy_1  | <134>Jan 23 11:40:32 haproxy[9]: 192.168.0.1:62612 [23/Jan/2021:11:40:32.651] proxy server/server1 0/0/0/1/1 200 137 - - ---- 1/1/0/0/0 0/0 {e8616fab-dff0-493c-9983-ebf7250c} "GET / HTTP/1.1" 1
+server_4   | 2021/01/23 11:40:33 [info] server received request
+haproxy_1  | <134>Jan 23 11:40:33 haproxy[9]: 192.168.0.1:62624 [23/Jan/2021:11:40:33.669] proxy server/server2 0/0/0/1/1 200 137 - - ---- 1/1/0/0/0 0/0 {e8616fab-dff0-493c-9983-ebf7250c} "GET / HTTP/1.1" 1
+server_5   | 2021/01/23 11:40:34 [info] server received request
+haproxy_1  | <134>Jan 23 11:40:34 haproxy[9]: 192.168.0.1:62634 [23/Jan/2021:11:40:34.689] proxy server/server3 0/0/0/1/1 200 137 - - ---- 1/1/0/0/0 0/0 {e8616fab-dff0-493c-9983-ebf7250c} "GET / HTTP/1.1" 1
+server_3   | 2021/01/23 11:40:35 [info] server received request
+haproxy_1  | <134>Jan 23 11:40:35 haproxy[9]: 192.168.0.1:62646 [23/Jan/2021:11:40:35.708] proxy server/server4 0/0/0/1/1 200 137 - - ---- 1/1/0/0/0 0/0 {e8616fab-dff0-493c-9983-ebf7250c} "GET / HTTP/1.1" 1
+server_1   | 2021/01/23 11:40:36 [info] server received request
+haproxy_1  | <134>Jan 23 11:40:36 haproxy[9]: 192.168.0.1:62656 [23/Jan/2021:11:40:36.730] proxy server/server5 0/0/0/1/1 200 137 - - ---- 1/1/0/0/0 0/0 {e8616fab-dff0-493c-9983-ebf7250c} "GET / HTTP/1.1" 1
 ```
 
 ## Down
@@ -64,3 +64,8 @@ Removing 001_haproxy_scaling_containers_haproxy_1 ... done
 Removing network 001_haproxy_scaling_containers_default
 Removing image 001_haproxy_scaling_containers_server
 ```
+
+## References:
+
+- [HAProxy Log Customization](https://www.haproxy.com/blog/haproxy-log-customization/)
+- [How to handle HAProxy log format](https://uala.io/how-to-handle-haproxy-log-format/)

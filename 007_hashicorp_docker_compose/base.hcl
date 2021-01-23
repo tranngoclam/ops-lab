@@ -6,13 +6,13 @@ bind_addr = "0.0.0.0"
 
 addresses {
   http = "{{ GetPrivateIP }}"
-  rpc = "{{ GetPrivateIP }}"
+  rpc  = "{{ GetPrivateIP }}"
   serf = "{{ GetPrivateIP }}"
 }
 
 advertise {
   http = "{{ GetPrivateIP }}:4646"
-  rpc = "{{ GetPrivateIP }}:4647"
+  rpc  = "{{ GetPrivateIP }}:4647"
   serf = "{{ GetPrivateIP }}:4648"
 }
 
@@ -34,7 +34,6 @@ consul {
   # Advertise Nomad services to Consul
   # Enables automatically registering the services
   auto_advertise = true
-
   # Enables the servers and clients bootstrap using Consul
   server_auto_join = true
   client_auto_join = true

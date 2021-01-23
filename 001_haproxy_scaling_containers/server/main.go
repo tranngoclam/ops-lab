@@ -2,8 +2,10 @@ package main
 
 import (
 	"log"
+	"math/rand"
 	"net/http"
 	"os"
+	"time"
 )
 
 func main() {
@@ -18,11 +20,14 @@ func main() {
 		panic(err)
 	}
 
+	rand.Seed(time.Now().UnixNano())
+
 	log.Println("[info]", "server is listening on", address)
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		log.Println("[info]", "server received request")
 
+		time.Sleep(time.Duration(rand.Intn(1000)) * time.Millisecond)
 		w.WriteHeader(http.StatusOK)
 		_, _ = w.Write([]byte(hostname))
 	})

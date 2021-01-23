@@ -6,13 +6,13 @@ bind_addr = "127.0.0.1"
 
 addresses {
   http = "__IP_ADDRESS__"
-  rpc = "__IP_ADDRESS__"
+  rpc  = "__IP_ADDRESS__"
   serf = "__IP_ADDRESS__"
 }
 
 advertise {
   http = "__IP_ADDRESS__:4646"
-  rpc = "__IP_ADDRESS__:4647"
+  rpc  = "__IP_ADDRESS__:4647"
   serf = "__IP_ADDRESS__:4648"
 }
 
@@ -34,7 +34,6 @@ consul {
   # Advertise Nomad services to Consul
   # Enables automatically registering the services
   auto_advertise = true
-
   # Enables the servers and clients bootstrap using Consul
   server_auto_join = true
   client_auto_join = true
