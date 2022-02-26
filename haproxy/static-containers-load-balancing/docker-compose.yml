@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  server_1:
+    build:
+      context: server
+    networks:
+      ops-lab:
+        ipv4_address: 172.20.0.11
+
+  server_2:
+    build:
+      context: server
+    networks:
+      ops-lab:
+        ipv4_address: 172.20.0.12
+
+  server_3:
+    build:
+      context: server
+    networks:
+      ops-lab:
+        ipv4_address: 172.20.0.13
+
+  haproxy:
+    image: haproxy:2.3.0
+    volumes:
+      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    ports:
+      - '80:80'
+    networks:
+      ops-lab:
+        ipv4_address: 172.20.0.10
+
+networks:
+  ops-lab:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

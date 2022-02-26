@@ -1,0 +1,27 @@
+version: '3.8'
+
+x-srv-config: &ref
+  image: alpine:3.15
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "10m"
+      max-file: "10"
+  restart: 'on-failure'
+  command: ["sh", "-c", "env"]
+
+x-env-config: &env
+  FOO: foo
+
+services:
+  bar:
+    environment:
+      <<: *env
+      BAR: bar
+    <<: *ref
+
+  baz:
+    environment:
+      <<: *env
+      BAZ: baz
+    <<: *ref

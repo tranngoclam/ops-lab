@@ -2,16 +2,6 @@
 
 > This repository provides a set of blueprints for Operation in Distributed System, Microservices.
 
-## Blueprints
-
-- [001: Scaling and Load Balancing with HAProxy](001_haproxy_scaling_containers)
-- [002: Scaling and Load Balancing with NGINX](002_nginx_scaling_containers)
-- [003: Use YAML Merge in Docker Compose](003_docker_compose_merge)
-- [WIP - 004: Explore Docker BuildKit](004_docker_buildkit)
-- [WIP - 005: Load Balancing with HAProxy and gRPC](005_haproxy_grpc_load_balancing)
-- [006: Load Balancing with NGINX and gRPC](006_nginx_grpc_load_balancing)
-- [007: Explore HashiCorp with Docker Compose](007_hashicorp_docker_compose)
-
 ## Getting Started
 
 1. Install Docker: <https://docs.docker.com/get-docker>
